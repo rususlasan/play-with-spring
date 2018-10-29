@@ -7,7 +7,10 @@ import org.springframework.beans.factory.annotation.Value;
 public class Data {
 
     @Value("${some.important.value}")
-    public int VALUE_FROM_PROPERTY_FILE;
+    public int valueFromPropertyFile;
+
+    @Value("${second.value}")
+    public String secondValue = "";
 
     private String config;
 
@@ -24,5 +27,13 @@ public class Data {
     public String getConfig() {
 
         return config;
+    }
+
+    @Override
+    public String toString() {
+        String vfpf = this.valueFromPropertyFile + "";
+        return "-> [config=" + this.config +
+                " valueFromPropertyFile=" + vfpf +
+                " secondValue=" + this.secondValue + "]";
     }
 }

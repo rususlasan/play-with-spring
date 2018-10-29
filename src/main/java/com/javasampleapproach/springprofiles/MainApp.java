@@ -2,6 +2,7 @@ package com.javasampleapproach.springprofiles;
 
 import com.javasampleapproach.springprofiles.bean.Data;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
+import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.env.Environment;
 
@@ -12,8 +13,10 @@ public class MainApp {
 
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("app-config.xml");
 
+        System.out.println("=============================================================================" + System.getProperty("line.separator"));
+
         Data profileIndependent = (Data) context.getBean("profileIndependentBean");
-        System.out.println(profileIndependent.getConfig());
+        System.out.println(profileIndependent);
 
         Environment environment = context.getEnvironment();
         String[] activeProfiles = environment.getActiveProfiles();
@@ -38,12 +41,15 @@ public class MainApp {
 
         try {
             Data beanFromAnotherXML = (Data) context.getBean("beanFromImportedXML");
-            System.out.println(beanFromAnotherXML.getConfig());
+            System.out.println(beanFromAnotherXML);
         } catch (NoSuchBeanDefinitionException e) {
             System.out.println("  ************** Could not find bean with name beanFromImportedXML in [" + profiles + "] profiles");
         }
 
-        System.out.println("VALUE_FROM_PROPERTY_FILE = " + profileIndependent.VALUE_FROM_PROPERTY_FILE);
+       // System.out.println("valueFromPropertyFile = " + profileIndependent.valueFromPropertyFile);
+       // System.out.println("secondValue = " + profileIndependent.secondValue);
+        //PropertyPlaceholderConfigurer ppc = (PropertyPlaceholderConfigurer) context.getBean("placeholderConfigurer");
+        //System.out.println(ppc.SYSTEM_PROPERTIES_MODE_FALLBACK + " " + ppc.SYSTEM_PROPERTIES_MODE_NEVER + " " + ppc.SYSTEM_PROPERTIES_MODE_OVERRIDE);
 
     }
 

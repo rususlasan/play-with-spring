@@ -8,19 +8,13 @@
 	   http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
     <context:component-scan base-package="com.javasampleapproach.springprofiles" />
+    <context:property-placeholder location="classpath:common.properties"/>
 
     <bean id="profileIndependentBean" class="com.javasampleapproach.springprofiles.bean.Data">
         <constructor-arg value="++++ This is a PROFILE INDEPENDENT bean!"/>
     </bean>
 
-    <beans profile="another">
-        <import resource="classpath:another-common-conf.xml"/>
-    </beans>
-
     <beans profile="default">
-        <bean id="dataBean" class="com.javasampleapproach.springprofiles.bean.Data">
-            <constructor-arg value="++++ This is a bean in DEFAULT profile"/>
-        </bean>
         <import resource="classpath:common-conf.xml"/>
     </beans>
 
