@@ -2,7 +2,6 @@ package com.javasampleapproach.springprofiles;
 
 import com.javasampleapproach.springprofiles.bean.Data;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
-import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.env.Environment;
 
@@ -45,11 +44,6 @@ public class MainApp {
         } catch (NoSuchBeanDefinitionException e) {
             System.out.println("  ************** Could not find bean with name beanFromImportedXML in [" + profiles + "] profiles");
         }
-
-       // System.out.println("valueFromPropertyFile = " + profileIndependent.valueFromPropertyFile);
-       // System.out.println("secondValue = " + profileIndependent.secondValue);
-        //PropertyPlaceholderConfigurer ppc = (PropertyPlaceholderConfigurer) context.getBean("placeholderConfigurer");
-        //System.out.println(ppc.SYSTEM_PROPERTIES_MODE_FALLBACK + " " + ppc.SYSTEM_PROPERTIES_MODE_NEVER + " " + ppc.SYSTEM_PROPERTIES_MODE_OVERRIDE);
 
     }
 

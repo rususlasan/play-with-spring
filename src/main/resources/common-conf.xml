@@ -8,6 +8,7 @@
 	   http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
     <context:component-scan base-package="com.javasampleapproach.springprofiles" />
+    <context:property-placeholder location="classpath:common.properties"/>
 
     <bean id="beanFromImportedXML" class="com.javasampleapproach.springprofiles.bean.Data">
         <constructor-arg value="++++ This is bean from common-conf.xml file."/>

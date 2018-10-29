@@ -2,20 +2,30 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
 	   http://www.springframework.org/schema/context
-	   http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	   http://www.springframework.org/schema/context/spring-context-4.3.xsd
+       http://www.springframework.org/schema/util
+    http://www.springframework.org/schema/util/spring-util-4.3.xsd">
 
     <context:component-scan base-package="com.javasampleapproach.springprofiles" />
-    <context:property-placeholder location="classpath:common.properties"/>
 
     <bean id="profileIndependentBean" class="com.javasampleapproach.springprofiles.bean.Data">
         <constructor-arg value="++++ This is a PROFILE INDEPENDENT bean!"/>
     </bean>
 
+    <import resource="common-conf.xml"/>
+
+    <!--
     <beans profile="default">
-        <import resource="classpath:common-conf.xml"/>
+        <util:properties id="commonProperties" location="classpath:common.properties"/>
     </beans>
+
+    <beans profile="another">
+        <util:properties id="commonProperties" location="classpath:another.properties"/>
+    </beans>
+    -->
 
 </beans>
