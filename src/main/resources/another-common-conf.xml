@@ -8,10 +8,7 @@
    	   http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
     <bean id="beanFromImportedXML" class="com.javasampleapproach.springprofiles.bean.Data">
-        <constructor-arg value="++++ This is bean from another-common-conf.xml file."/>
+        <constructor-arg value="ANOTHER-COMMON-CONF.XML"/>
     </bean>
-
-    <!--<util:properties id="commonProperties" location="classpath:another.common.properties"/>-->
-    <context:property-placeholder location="classpath:another.properties"/>
 
 </beans>

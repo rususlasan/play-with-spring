@@ -14,9 +14,6 @@ public class MainApp {
 
         System.out.println("=============================================================================" + System.getProperty("line.separator"));
 
-        Data profileIndependent = (Data) context.getBean("profileIndependentBean");
-        System.out.println(profileIndependent);
-
         Environment environment = context.getEnvironment();
         String[] activeProfiles = environment.getActiveProfiles();
         System.out.println("Count of active profiles is : " + activeProfiles.length);
@@ -30,21 +27,16 @@ public class MainApp {
             System.out.println(profiles);
         }
 
-        // try to load bean from default profile
-        try {
-            Data dataBean = (Data) context.getBean("dataBean");
-            System.out.println(dataBean.getConfig());
-        } catch (NoSuchBeanDefinitionException e) {
-            System.out.println("  ************** Could not find bean with name dataBean in [" + profiles + "] profiles");
-        }
+        String[] profilesName = new String[]{"profileIndependent", "beanFromImportedXML"};
 
-        try {
-            Data beanFromAnotherXML = (Data) context.getBean("beanFromImportedXML");
-            System.out.println(beanFromAnotherXML);
-        } catch (NoSuchBeanDefinitionException e) {
-            System.out.println("  ************** Could not find bean with name beanFromImportedXML in [" + profiles + "] profiles");
+        for (String name: profilesName) {
+            try {
+                Data dataBean = (Data) context.getBean(name);
+                System.out.println(dataBean);
+            } catch (NoSuchBeanDefinitionException e) {
+                System.out.println("ERROR: could not found bean with name " + name);
+            }
         }
-
     }
 
 }

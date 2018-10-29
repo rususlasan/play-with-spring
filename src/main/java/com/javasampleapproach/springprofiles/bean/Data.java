@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Value;
 
 public class Data {
 
-    @Value("${some.important.value}")
+    @Value("#{commonProperties['some.important.value']}")
     public int valueFromPropertyFile;
 
-    @Value("${second.value}")
+    @Value("#{commonProperties['second.value']}")
     public String secondValue = "";
 
     private String config;
