@@ -24,6 +24,12 @@ public class Data {
         this.config = config;
     }
 
+    public Data(String config, int valueFromPropertyFile, String secondValue) {
+        this.valueFromPropertyFile = valueFromPropertyFile;
+        this.secondValue = secondValue;
+        this.config = config;
+    }
+
     public String getConfig() {
 
         return config;

@@ -8,24 +8,19 @@
 	   http://www.springframework.org/schema/context
 	   http://www.springframework.org/schema/context/spring-context-4.3.xsd
        http://www.springframework.org/schema/util
-    http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+       http://www.springframework.org/schema/util/spring-util-4.3.xsd">
 
     <context:component-scan base-package="com.javasampleapproach.springprofiles" />
+    <import resource="classpath:common-conf.xml"/>
 
-    <!--
     <bean id="profileIndependentBean" class="com.javasampleapproach.springprofiles.bean.Data">
-        <constructor-arg value="++++ This is a PROFILE INDEPENDENT bean!"/>
+        <constructor-arg value="Seems like I am profile-dependent!"/>
+        <constructor-arg value="1000000" type="int"/>    <!-- these values will not use, properties will set from properties files that imported below -->
+        <constructor-arg value="created on startup"/>
     </bean>
-    -->
 
-    <beans profile="default">
-        <util:properties id="commonProperties" location="classpath:common.properties"/>
-        <import resource="classpath:common-conf.xml"/>
-    </beans>
-
-    <beans profile="another">
-        <util:properties id="commonProperties" location="classpath:another.properties"/>
-        <import resource="classpath:another-common-conf.xml"/>
-    </beans>
+    <bean id="superHero" class="com.javasampleapproach.springprofiles.bean.SuperHero">
+        <constructor-arg value="DEFAULT"/>
+    </bean>
 
 </beans>
