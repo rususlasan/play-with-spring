@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Value;
 public class Data {
 
     @Value("#{commonProperties['some.important.value']}")
+    //@Value("${some.important.value}")
     public int valueFromPropertyFile;
 
     @Value("#{commonProperties['second.value']}")
+    //@Value("F${second.value}")
     public String secondValue = "";
 
     private String config;

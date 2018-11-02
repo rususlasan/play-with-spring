@@ -17,7 +17,11 @@
     </bean>
 
     <beans profile="default">
-        <util:properties id="commonProperties" location="classpath:common.properties"/>
+        <!-- we can provide something like this: classpath:common.properties,another.properties, last value for concreete value will be used-->
+        <!-- <context:property-placeholder location="classpath:common.properties,another.properties"/> -->
+        <util:properties id="commonProperties" location="classpath:common.properties,some-new.properties" local-override="true">
+            <prop key="second.value">Override all properties!!!</prop>
+        </util:properties>
     </beans>
 
     <beans profile="another">
