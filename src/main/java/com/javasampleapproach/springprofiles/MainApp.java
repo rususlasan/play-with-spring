@@ -1,5 +1,6 @@
 package com.javasampleapproach.springprofiles;
 
+import com.javasampleapproach.springprofiles.bean.AnotherBean;
 import com.javasampleapproach.springprofiles.bean.Data;
 import com.javasampleapproach.springprofiles.bean.SuperHero;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
@@ -28,9 +29,9 @@ public class MainApp {
             System.out.println(profiles);
         }
 
-        String[] profilesName = new String[]{"profileIndependentBean"};
+        String[] beanNames = new String[]{"profileIndependentBean", "beanFromImportedXML"};
 
-        for (String name: profilesName) {
+        for (String name: beanNames) {
             try {
                 Data dataBean = (Data) context.getBean(name);
                 System.out.println(dataBean);
@@ -46,6 +47,9 @@ public class MainApp {
         } catch (NoSuchBeanDefinitionException e) {
             System.out.println("ERROR: could not found bean with name superHero");
         }
+
+        AnotherBean anotherBean = (AnotherBean) context.getBean("anotherBeanClass");
+        System.out.println("anotherBeanClass: " + anotherBean.getMyValue());
     }
 
 }

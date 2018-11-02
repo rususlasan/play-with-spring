@@ -16,17 +16,19 @@
         <constructor-arg value="hands"/>
     </bean>
 
+    <bean id="anotherBeanClass" class="com.javasampleapproach.springprofiles.bean.AnotherBean"/>
+
     <beans profile="default">
-        <!-- we can provide something like this: classpath:common.properties,another.properties, last value for concreete value will be used-->
-        <!-- <context:property-placeholder location="classpath:common.properties,another.properties"/> -->
-        <util:properties id="commonProperties" location="classpath:common.properties,some-new.properties" local-override="true">
-            <prop key="second.value">Override all properties!!!</prop>
+        <!-- we can provide something like this: classpath:first.properties,second.properties, last value for concreete value will be used-->
+        <!-- <context:property-placeholder location="classpath:first.properties,second.properties"/> -->
+        <util:properties id="commonProperties" location="classpath:first.properties,third.properties" local-override="true">
+            <prop key="second.value">Overrided: second.value in COMMON-CONF.xml (default)</prop>
         </util:properties>
     </beans>
 
     <beans profile="another">
-        <util:properties id="commonProperties" location="classpath:another.properties" local-override="true">
-            <prop key="second.value">WOW!!! YOU OVERRIDE ME!!!</prop>
+        <util:properties id="commonProperties" location="classpath:second.properties" local-override="true">
+            <prop key="second.value">Overrided: second.value in COMMON-CONF.xml (another)</prop>
         </util:properties>
     </beans>
 

@@ -11,7 +11,6 @@
        http://www.springframework.org/schema/util/spring-util-4.3.xsd">
 
     <context:component-scan base-package="com.javasampleapproach.springprofiles" />
-    <import resource="classpath:common-conf.xml"/>
 
     <bean id="superHero" class="com.javasampleapproach.springprofiles.bean.SuperHero">
         <constructor-arg value="DEFAULT"/>
@@ -19,9 +18,11 @@
     </bean>
 
     <bean id="profileIndependentBean" class="com.javasampleapproach.springprofiles.bean.Data">
-        <constructor-arg value="Seems like I am profile-dependent!"/>
+        <constructor-arg value="I set in APP-CONFIG.xml!"/>
         <constructor-arg value="1000000" type="int"/>    <!-- these values will not use, properties will set from properties files that imported below -->
-        <constructor-arg value="created on startup"/>
+        <constructor-arg value="created on startup from APP-CONFIG.xml"/>
     </bean>
+
+    <import resource="classpath:common-conf.xml"/>
 
 </beans>
