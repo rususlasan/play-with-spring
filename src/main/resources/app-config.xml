@@ -25,4 +25,16 @@
 
     <import resource="classpath:common-conf.xml"/>
 
+    <beans profile="small">
+        <bean id="superHero" class="com.javasampleapproach.springprofiles.bean.SuperHero">
+            <constructor-arg value="SMALL_PROFILE_NAME"/>
+            <constructor-arg ref="equipment"/>
+        </bean>
+        <util:properties id="commonProperties" location="classpath:first.properties"/>
+
+        <beans profile="micro">
+            <import resource="another-common-conf.xml"/>
+        </beans>
+    </beans>
+
 </beans>

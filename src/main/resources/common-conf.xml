@@ -32,8 +32,6 @@
         </util:properties>
     </beans>
 
-    <beans profile="heroes">
-        <context:property-override location="classpath:override.properties"/>
-    </beans>
+
 
 </beans>
