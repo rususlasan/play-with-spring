@@ -32,8 +32,11 @@
         </bean>
         <util:properties id="commonProperties" location="classpath:first.properties"/>
 
+        <import resource="another-common-conf.xml"/>
+
         <beans profile="micro">
             <import resource="another-common-conf.xml"/>
+            <util:properties id="commonProperties" location="classpath:first.properties,classpath:micro.properties"/>
         </beans>
     </beans>
 
