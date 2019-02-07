@@ -25,7 +25,15 @@
 
     <import resource="classpath:common-conf.xml"/>
 
-    <beans profile="small">
+    <bean id="factMeth" class="com.javasampleapproach.springprofiles.bean.BeanWithFactoryMethod" factory-method="createInstance">
+        <constructor-arg value="9222"/>
+    </bean>
+
+    <beans profile="!default">
+        <bean id="factMeth" class="com.javasampleapproach.springprofiles.bean.BeanWithFactoryMethod" factory-method="createInstance">
+            <constructor-arg value="ANOTHER_UNIQUE_NAME"/>
+            <constructor-arg value="8888"/>
+        </bean>
         <bean id="superHero" class="com.javasampleapproach.springprofiles.bean.SuperHero">
             <constructor-arg value="SMALL_PROFILE_NAME"/>
             <constructor-arg ref="equipment"/>

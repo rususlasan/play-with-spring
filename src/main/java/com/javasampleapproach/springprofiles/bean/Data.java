@@ -14,6 +14,9 @@ public class Data {
     //@Value("F${second.value}")
     public String secondValue = "";
 
+    @Value("#{commonProperties['boolean.value'] ?: false}")
+    private boolean bolVal;
+
     private String config;
 
     public Data() {}
@@ -40,8 +43,9 @@ public class Data {
     @Override
     public String toString() {
         String vfpf = this.valueFromPropertyFile + "";
-        return "-> [config=" + this.config +
+        return "[config=" + this.config +
                 " valueFromPropertyFile=" + vfpf +
-                " secondValue=" + this.secondValue + "]";
+                " secondValue=" + this.secondValue +
+                " booean.value=" + bolVal +"]";
     }
 }

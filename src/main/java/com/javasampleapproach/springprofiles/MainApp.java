@@ -1,6 +1,7 @@
 package com.javasampleapproach.springprofiles;
 
 import com.javasampleapproach.springprofiles.bean.AnotherBean;
+import com.javasampleapproach.springprofiles.bean.BeanWithFactoryMethod;
 import com.javasampleapproach.springprofiles.bean.Data;
 import com.javasampleapproach.springprofiles.bean.SuperHero;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
@@ -29,16 +30,20 @@ public class MainApp {
             System.out.println(profiles);
         }
 
-        String[] beanNames = new String[]{"profileIndependentBean", "beanFromImportedXML"};
-
+        String[] beanNames = new String[]{"profileIndependentBean", "beanFromImportedXML", "factMeth"};
+        System.out.println(" *****************************************************************************");
         for (String name: beanNames) {
             try {
                 Data dataBean = (Data) context.getBean(name);
                 System.out.println(dataBean);
             } catch (NoSuchBeanDefinitionException e) {
                 System.out.println("ERROR: could not found bean with name " + name);
+            } catch (ClassCastException e) {
+                BeanWithFactoryMethod bwm = (BeanWithFactoryMethod) context.getBean(name);
+                System.out.println(bwm);
             }
         }
+        System.out.println(" =============================================================================");
 
         // try get superHero
         try {
